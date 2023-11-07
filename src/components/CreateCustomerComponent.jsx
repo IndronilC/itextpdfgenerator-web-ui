@@ -41,9 +41,10 @@ class CreateCustomerComponent extends Component {
             grossSalary: this.state.grossSalary,
             netSalary: this.state.netSalary};
         console.log('customer => ' + JSON.stringify(customerRequest));
-        CustomerService.createCustomer(customerRequest).then(
-            console.log('customer response =>' + JSON.stringify(customerRequest))
-        )
+        CustomerService.createCustomer(customerRequest).then((res) => {
+         console.log(res.data)
+        })
+        
 
     }
     
