@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CustomerService from '../services/CustomerService';
+
 class CreateCustomerComponent extends Component {
     constructor(props) {
         super(props)
@@ -42,7 +43,7 @@ class CreateCustomerComponent extends Component {
             netSalary: this.state.netSalary};
         console.log('customer => ' + JSON.stringify(customerRequest));
         CustomerService.createCustomer(customerRequest).then((res) => {
-         console.log(res.data)
+         this.props.navigate("/customers");
         })
         
 
@@ -97,4 +98,16 @@ class CreateCustomerComponent extends Component {
     }
 }
 
-export default CreateCustomerComponent;
+function addHookTo(Component) {
+    function CompWithHook(props) {
+      const navigate = useNavigate();
+  
+      return <Component {...props} navigate={navigate} />;
+    }
+  
+    return CompWithHook;
+  }
+  
+  export default addHookTo(CreateCustomerComponent);
+  
+
