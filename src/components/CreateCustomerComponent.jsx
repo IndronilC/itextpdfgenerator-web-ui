@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import CustomerService from '../services/CustomerService';
 class CreateCustomerComponent extends Component {
     constructor(props) {
         super(props)
@@ -35,11 +36,14 @@ class CreateCustomerComponent extends Component {
     
     saveCustomer = (event) => {
         event.preventDefault();
-        let customer = {customerName: this.state.customerName, 
+        let customerRequest = {customerName: this.state.customerName, 
             dateOfBirth: this.state.dateOfBirth, 
             grossSalary: this.state.grossSalary,
             netSalary: this.state.netSalary};
-        console.log('employee => ' + JSON.stringify(customer));
+        console.log('customer => ' + JSON.stringify(customerRequest));
+        CustomerService.createCustomer(customerRequest).then(
+            console.log('customer response =>' + JSON.stringify(customerRequest))
+        )
 
     }
     
@@ -76,7 +80,7 @@ class CreateCustomerComponent extends Component {
                                                 value={this.state.netSalary} onChange={this.changeNetSalaryHandler}/>
                                         </div>
 
-                                        <button className="btn btn-success" onClick={this.saveOrUpdateEmployee}>Save</button>
+                                        <button className="btn btn-success" onClick={this.saveCustomer}>Save</button>
                                         <Link to = "/customers">  
                                           <button className="btn btn-danger" style={{marginLeft: "10px"}}>cancel</button>
                                         </Link>
