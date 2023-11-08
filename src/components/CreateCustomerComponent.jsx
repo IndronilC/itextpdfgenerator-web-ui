@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomerService from '../services/CustomerService';
 
+
 class CreateCustomerComponent extends Component {
     constructor(props) {
         super(props)
@@ -10,10 +11,10 @@ class CreateCustomerComponent extends Component {
              customerName: '',
              dateOfBirth: '',
              grossSalary: '',
-             netSalary: ''
+             netSalary: '',
         }
-        this.changeCustomerNameHandler = this.changeCustomerNameHandler.bind(this);
-        this.changeDateOfBirthHandler = this.changeDateOfBirthHandler.bind(this);
+       this.changeCustomerNameHandler = this.changeCustomerNameHandler.bind(this);
+       this.changeDateOfBirthHandler = this.changeDateOfBirthHandler.bind(this);
        this.changeGrossSalaryHandler = this.changeGrossSalaryHandler.bind(this);
        this.changeNetSalaryHandler = this.changeNetSalaryHandler.bind(this);
        this.saveCustomer = this.saveCustomer.bind(this);
