@@ -81,6 +81,17 @@ class ListCustomerComponent extends Component {
                  </Link>
                  </div>
                  <br></br>
+                 <div className = "row">
+                        <table className = "table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th> Customer Full Name</th>
+                                    <th> Customer Date of Birth</th>
+                                    <th> Customer Gross Salary</th>
+                                    <th> Customer Net Salary</th>
+                                    <th> Actions</th>
+                                </tr>
+                            </thead>
                  {this.state.pageData}
                 <ReactPaginate
                     previousLabel={"prev"}
@@ -94,8 +105,9 @@ class ListCustomerComponent extends Component {
                     containerClassName={"pagination"}
                     subContainerClassName={"pages pagination"}
                     activeClassName={"active"}/>
-                
+                </table>
             </div>
+          </div>  
         )
     }
 }
